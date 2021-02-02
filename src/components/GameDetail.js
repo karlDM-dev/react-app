@@ -67,7 +67,7 @@ const GameDetail = ({pathId}) => {
     const getClip = () => {
         const clip = game.clip;
         if (clip !== null) {
-            return <video src={game.clip.clip} controls autoPlay="autoplay" muted></video>;
+            return <video src={game.clip.clip} controls autoPlay="autoplay" loop></video>;
         }
     }
     
@@ -181,10 +181,18 @@ const Stats = styled(motion.div)`
         width: 1.5rem;
         height: 1.5rem;
     }
+
+    @media screen and (max-width: 680px) {
+        display: block;
+    }
 `;
 
 const Info = styled(motion.div)`
     text-align: center;
+
+    @media screen and (max-width: 680px) {
+        text-align: left;
+    }
 `;
 
 const Platforms = styled(motion.div)`
@@ -198,13 +206,28 @@ const Platforms = styled(motion.div)`
         margin: 0 1rem;
         cursor: pointer;
     }
+
+    @media screen and (max-width: 680px) {
+        justify-content: start;
+        width: fit-content;
+        padding: 0.5rem;
+
+        img {
+            margin: 0.5rem;
+        }
+    }
 `;
 
 const Media = styled(motion.div)`
     width: 100%;
     height: 80vh;
+    min-height: 550px;
     background-size: cover;
     background-position: center top;
+
+    @media screen and (max-width: 305px) {
+        height: 50vh;
+    }
 `;
 
 const Description = styled(motion.div)`
@@ -226,6 +249,8 @@ const Wrapper = styled(motion.div)`
         right: 0;
 
         video {
+            height: 100%;
+            width: 100%;
             min-width: 300px;
         }
     }
@@ -235,10 +260,7 @@ const Wrapper = styled(motion.div)`
             position: relative;
             display: flex;
             justify-content: center;
-            
-            video {
-                display: block;
-            }
+            transform: translateY(-2rem);
         }
     }
 `;
@@ -249,6 +271,10 @@ const StatsContainer = styled(motion.div)`
     position: absolute;
     top: 0;
     background: rgba(0,0,0,0.25);
+
+    @media screen and (max-width: 1200px) {
+        padding-bottom: 0;
+    }
 `;
 
 const Gallery = styled(motion.div)`
